@@ -1,14 +1,13 @@
 package com.NinoCenov.CarSpareParts.entity.make;
 
 import com.NinoCenov.CarSpareParts.entity.model.Model;
-import com.NinoCenov.CarSpareParts.entity.part.Part;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "Make")

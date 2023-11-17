@@ -1,14 +1,10 @@
 package com.NinoCenov.CarSpareParts.entity.model;
-
 import com.NinoCenov.CarSpareParts.entity.make.Make;
-import com.NinoCenov.CarSpareParts.entity.part.Part;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-
-import java.util.Set;
 
 @Entity
 @Table(name = "Model")
