@@ -1,10 +1,13 @@
 package com.NinoCenov.CarSpareParts.entity.part;
 
+import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.partcategory.PartCategory;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "Parts")
@@ -36,4 +39,11 @@ public class Part {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "part_category_id")
     private PartCategory partCategory;
+
+    @ManyToMany
+    @JoinTable(
+            name = "part_model",
+            joinColumns = @JoinColumn(name = "part_id"),
+            inverseJoinColumns = @JoinColumn(name = "model_id"))
+    private Set<Model> setOfModels;
 }
