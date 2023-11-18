@@ -14,9 +14,6 @@ public class CategoryConverter {
                 .build();
     }
 
-
-
-
     public CategoryResponse toCategoryResponse(Category category){
         CategoryResponse response = new CategoryResponse();
         response.setId(category.getId());

@@ -11,8 +11,7 @@ import lombok.*;
 @Setter
 @Builder
 public class CategoryRequest {
-    @NotNull
-    private Long id;
+
 
     @NotBlank
     private String categoryName;

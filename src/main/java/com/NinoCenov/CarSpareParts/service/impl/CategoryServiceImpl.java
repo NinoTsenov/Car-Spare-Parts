@@ -16,8 +16,6 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository repository;
     private final CategoryConverter converter;
 
-
-
     @Override
     public CategoryResponse createCategory(CategoryRequest request) {
         Category category = converter.createCategory(request);
