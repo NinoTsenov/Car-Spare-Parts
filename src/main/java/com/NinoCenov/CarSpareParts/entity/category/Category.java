@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.entity.partcategory;
+package com.NinoCenov.CarSpareParts.entity.category;
 
 import com.NinoCenov.CarSpareParts.entity.part.Part;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -10,29 +10,29 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "PartCategory")
+@Table(name = "Category")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PartCategory {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "part_category_id", nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Long id;
 
-    @Column(name = "part_category_name", nullable = false)
+    @Column(name = "category_name", nullable = false)
     @NotEmpty()
     @Size(min=2, max = 255)
-    private String partCategoryName;
+    private String categoryName;
 
-    @Column(name = "part_category_description", nullable = false)
+    @Column(name = "category_description", nullable = false)
     @NotEmpty()
     @Size(min=2, max = 255)
-    private String partCategoryDescription;
+    private String categoryDescription;
 
-    @OneToMany(mappedBy = "partCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonBackReference()
     private List<Part> part;
 }

@@ -1,7 +1,7 @@
 package com.NinoCenov.CarSpareParts.entity.part;
 
 import com.NinoCenov.CarSpareParts.entity.model.Model;
-import com.NinoCenov.CarSpareParts.entity.partcategory.PartCategory;
+import com.NinoCenov.CarSpareParts.entity.category.Category;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -38,7 +38,7 @@ public class Part {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "part_category_id")
-    private PartCategory partCategory;
+    private Category category;
 
     @ManyToMany
     @JoinTable(
