@@ -1,7 +1,6 @@
 package com.NinoCenov.CarSpareParts.controller;
 import com.NinoCenov.CarSpareParts.dto.part.model.ModelRequest;
 import com.NinoCenov.CarSpareParts.dto.part.model.ModelResponse;
-import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.service.ModelService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
