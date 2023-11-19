@@ -28,6 +28,4 @@ public class Model {
     @JoinColumn(name = "make_id")
     @JsonBackReference
     private Make make;
-
-
 }

@@ -1,7 +1,7 @@
 package com.NinoCenov.CarSpareParts.converter;
 
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeRequest;
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeResponse;
+import com.NinoCenov.CarSpareParts.dto.make.MakeRequest;
+import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +17,7 @@ public class MakeConverter {
      MakeResponse response = new MakeResponse();
      response.setId(make.getId());
      response.setMake(make.getMake());
+     response.setModel(make.getModels()); //have to check !!!
      return response;
     }
 }

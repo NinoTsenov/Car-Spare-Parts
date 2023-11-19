@@ -1,8 +1,8 @@
 package com.NinoCenov.CarSpareParts.service.impl;
 
 import com.NinoCenov.CarSpareParts.converter.ModelConverter;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelRequest;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelResponse;
+import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
+import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.exeptions.ModelNotFoundException;

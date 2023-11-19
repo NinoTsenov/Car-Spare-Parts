@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import java.util.List;
 
-import java.util.Set;
 
 @Entity
 @Table(name = "Parts")
@@ -44,5 +44,5 @@ public class Part {
             name = "part_model",
             joinColumns = @JoinColumn(name = "part_id"),
             inverseJoinColumns = @JoinColumn(name = "model_id"))
-    private Set<Model> setOfModels;
+    private List<Model> setOfPartsAndModels;
 }

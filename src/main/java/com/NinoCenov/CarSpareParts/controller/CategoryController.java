@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.controller;
-import com.NinoCenov.CarSpareParts.dto.part.category.CategoryRequest;
-import com.NinoCenov.CarSpareParts.dto.part.category.CategoryResponse;
+import com.NinoCenov.CarSpareParts.dto.category.CategoryRequest;
+import com.NinoCenov.CarSpareParts.dto.category.CategoryResponse;
 import com.NinoCenov.CarSpareParts.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

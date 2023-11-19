@@ -1,16 +1,17 @@
-package com.NinoCenov.CarSpareParts.dto.part.category;
+package com.NinoCenov.CarSpareParts.dto.category;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class CategoryRequest {
+public class CategoryResponse {
 
+    @NotNull
+    private Long id;
 
     @NotBlank
     private String categoryName;

@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.controller;
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeRequest;
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeResponse;
+import com.NinoCenov.CarSpareParts.dto.make.MakeRequest;
+import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 import com.NinoCenov.CarSpareParts.service.MakeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +40,14 @@ public class MakeController {
     @GetMapping("/getAll")
     public ResponseEntity<List<MakeResponse>> getAllMakes(){
        return ResponseEntity.status(HttpStatus.OK).body(service.getAllMakes());
+    }
+
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<MakeResponse> getMakeById(@PathVariable  Long id){
+        MakeResponse foundMake = service.findMakeById(id);
+        if(foundMake!=null){
+            return ResponseEntity.status(HttpStatus.OK).body(foundMake);
+        }
+        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

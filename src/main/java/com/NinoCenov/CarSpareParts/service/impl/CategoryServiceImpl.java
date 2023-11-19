@@ -1,8 +1,8 @@
 package com.NinoCenov.CarSpareParts.service.impl;
 
 import com.NinoCenov.CarSpareParts.converter.CategoryConverter;
-import com.NinoCenov.CarSpareParts.dto.part.category.CategoryRequest;
-import com.NinoCenov.CarSpareParts.dto.part.category.CategoryResponse;
+import com.NinoCenov.CarSpareParts.dto.category.CategoryRequest;
+import com.NinoCenov.CarSpareParts.dto.category.CategoryResponse;
 import com.NinoCenov.CarSpareParts.entity.category.Category;
 import com.NinoCenov.CarSpareParts.repository.CategoryRepository;
 import com.NinoCenov.CarSpareParts.service.CategoryService;

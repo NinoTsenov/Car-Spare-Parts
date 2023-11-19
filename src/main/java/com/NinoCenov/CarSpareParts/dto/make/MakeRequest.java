@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.dto.part.make;
+package com.NinoCenov.CarSpareParts.dto.make;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;

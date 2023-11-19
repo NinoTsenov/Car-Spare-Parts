@@ -1,12 +1,15 @@
 package com.NinoCenov.CarSpareParts.controller;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelRequest;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelResponse;
+import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
+import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
+import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.service.ModelService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/model")
@@ -43,4 +46,13 @@ public class ModelController {
         }
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    @GetMapping("/findByMake/{make}")
+    public ResponseEntity<List<ModelResponse>> getModelsByMake(@PathVariable Make make){
+        List<ModelResponse> allModels = service.findAllModelsByMaker(make);
+        if(allModels!=null){
+            return ResponseEntity.status(HttpStatus.OK).body(allModels);
+        }
+        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
 }

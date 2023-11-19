@@ -1,7 +1,7 @@
 package com.NinoCenov.CarSpareParts.service;
 
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeRequest;
-import com.NinoCenov.CarSpareParts.dto.part.make.MakeResponse;
+import com.NinoCenov.CarSpareParts.dto.make.MakeRequest;
+import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 
 import java.util.List;
 

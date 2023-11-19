@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.service;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelRequest;
-import com.NinoCenov.CarSpareParts.dto.part.model.ModelResponse;
+import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
+import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 
 import java.util.List;

@@ -1,5 +1,4 @@
 package com.NinoCenov.CarSpareParts.entity.category;
-
 import com.NinoCenov.CarSpareParts.entity.part.Part;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

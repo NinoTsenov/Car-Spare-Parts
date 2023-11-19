@@ -1,5 +1,4 @@
 package com.NinoCenov.CarSpareParts.entity.make;
-
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
