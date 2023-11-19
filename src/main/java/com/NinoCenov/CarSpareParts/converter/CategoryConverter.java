@@ -1,7 +1,7 @@
 package com.NinoCenov.CarSpareParts.converter;
 
-import com.NinoCenov.CarSpareParts.dto.part.CategoryRequest;
-import com.NinoCenov.CarSpareParts.dto.part.CategoryResponse;
+import com.NinoCenov.CarSpareParts.dto.part.category.CategoryRequest;
+import com.NinoCenov.CarSpareParts.dto.part.category.CategoryResponse;
 import com.NinoCenov.CarSpareParts.entity.category.Category;
 import org.springframework.stereotype.Component;
 

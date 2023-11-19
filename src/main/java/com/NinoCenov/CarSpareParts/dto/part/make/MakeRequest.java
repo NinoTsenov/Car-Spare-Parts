@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.dto.part;
+package com.NinoCenov.CarSpareParts.dto.part.make;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
@@ -8,8 +8,8 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class MakerRequest {
+public class MakeRequest {
 
     @NotEmpty()
-    private String makerName;
+    private String make;
 }

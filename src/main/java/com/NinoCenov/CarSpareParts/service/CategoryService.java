@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.service;
-import com.NinoCenov.CarSpareParts.dto.part.CategoryRequest;
-import com.NinoCenov.CarSpareParts.dto.part.CategoryResponse;
+import com.NinoCenov.CarSpareParts.dto.part.category.CategoryRequest;
+import com.NinoCenov.CarSpareParts.dto.part.category.CategoryResponse;
 
 
 public interface CategoryService {

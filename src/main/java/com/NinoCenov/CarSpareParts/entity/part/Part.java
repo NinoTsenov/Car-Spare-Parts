@@ -1,5 +1,4 @@
 package com.NinoCenov.CarSpareParts.entity.part;
-
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.category.Category;
 import jakarta.persistence.*;
@@ -19,10 +18,10 @@ import java.util.Set;
 public class Part {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "part_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "part_name", nullable = false)
+    @Column(name = "part", nullable = false)
     @NotEmpty()
     @Size(min=2, max = 255)
     private String partName;
@@ -32,12 +31,12 @@ public class Part {
     @Size(min=2, max = 255)
     private String partDescription;
 
-    @Column(name = "part_price", nullable = false)
+    @Column(name = "price", nullable = false)
     @NotEmpty()
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "part_category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToMany
