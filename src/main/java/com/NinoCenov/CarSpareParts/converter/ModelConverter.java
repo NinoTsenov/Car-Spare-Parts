@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class ModelConverter {
-    private final MakeRepository repository;
+
+    private final MakeRepository makeRepository;
 
     public Model createModel(ModelRequest request){
 
-        Make make = repository.findByName(request.getMake()).orElseThrow(
+        Make make = makeRepository.findByName(request.getMake()).orElseThrow(
                 ()-> new MakeNotFoundException("This make is missing"));
 
         return Model.builder()
@@ -29,7 +30,7 @@ public class ModelConverter {
         ModelResponse response = new ModelResponse();
         response.setId(model.getId());
         response.setModel(model.getModel());
-        response.setMake(model.getMake());
+        response.setMake(model.getMake().getMake());
         return response;
     }
 }
