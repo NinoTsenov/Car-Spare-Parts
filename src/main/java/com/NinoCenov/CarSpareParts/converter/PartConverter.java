@@ -12,7 +12,7 @@ public class PartConverter {
                 .partName(request.getPartName())
                 .partDescription(request.getPartDescription())
                 .price(request.getPrice())
-                .category(request.getCategory())
+            //    .category(request.getCategory())  same as make
                 .setOfPartsAndModels(request.getSetOfPartsAndModels())
                 .build();
     }
@@ -25,6 +25,7 @@ public class PartConverter {
         response.setPartDescription(part.getPartDescription());
         response.setPrice(part.getPrice());
         response.setCategory(part.getCategory());
+       // response.set  new arraylist + for loop
         return response;
     }
 }
