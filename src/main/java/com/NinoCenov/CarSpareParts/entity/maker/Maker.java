@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.entity.make;
+package com.NinoCenov.CarSpareParts.entity.maker;
 
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import jakarta.persistence.*;
@@ -10,24 +10,24 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Make")
+@Table(name = "Maker")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Make {
+public class Maker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "make_id", nullable = false)
+    @Column(name = "maker_id", nullable = false)
     private Long id;
 
-    @Column(name = "make_name", nullable = false)
+    @Column(name = "maker", nullable = false)
     @NotEmpty()
     @Size(min=2, max = 255)
-    private String makeName;
+    private String makerName;
 
-    @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "maker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Model> model;
 
 }

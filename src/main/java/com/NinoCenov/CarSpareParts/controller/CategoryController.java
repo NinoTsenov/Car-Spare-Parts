@@ -1,7 +1,7 @@
 package com.NinoCenov.CarSpareParts.controller;
 import com.NinoCenov.CarSpareParts.dto.part.CategoryRequest;
 import com.NinoCenov.CarSpareParts.dto.part.CategoryResponse;
-import com.NinoCenov.CarSpareParts.repository.category.CategoryRepository;
+import com.NinoCenov.CarSpareParts.repository.CategoryRepository;
 import com.NinoCenov.CarSpareParts.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService service;
-    private final CategoryRepository repository;
+
 
     @PostMapping("/create")
     public ResponseEntity<CategoryResponse> createCategory(@Valid @RequestBody CategoryRequest request){

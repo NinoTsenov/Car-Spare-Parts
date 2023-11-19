@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.repository.user;
+package com.NinoCenov.CarSpareParts.repository;
 
 import com.NinoCenov.CarSpareParts.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

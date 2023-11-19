@@ -1,5 +1,5 @@
 package com.NinoCenov.CarSpareParts.entity.model;
-import com.NinoCenov.CarSpareParts.entity.make.Make;
+import com.NinoCenov.CarSpareParts.entity.maker.Maker;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -19,15 +19,15 @@ public class Model {
     @Column(name = "model_id", nullable = false)
     private Long id;
 
-    @Column(name = "model_name", nullable = false)
+    @Column(name = "model", nullable = false)
     @NotEmpty()
     @Size(min=2, max = 255)
     private String modelName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "make_id")
+    @JoinColumn(name = "maker_id")
     @JsonBackReference()
-    private Make make;
+    private Maker maker;
 
 
 }
