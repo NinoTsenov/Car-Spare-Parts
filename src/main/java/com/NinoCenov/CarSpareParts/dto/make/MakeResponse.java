@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.dto.make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class MakeResponse {
 
     private Long id;
 
-    @NotEmpty()
+    @NotBlank()
     private String make;
 
     @NotNull

@@ -1,9 +1,12 @@
 package com.NinoCenov.CarSpareParts.dto.part;
 
 import com.NinoCenov.CarSpareParts.entity.category.Category;
+import com.NinoCenov.CarSpareParts.entity.model.Model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +26,9 @@ public class PartResponse {
     @NotNull()
     private Double price;
 
-    @NotBlank()
+    @NotNull()
     private Category category;
+
+    @NotNull
+    private List<Model> setOfPartsAndModels;
 }

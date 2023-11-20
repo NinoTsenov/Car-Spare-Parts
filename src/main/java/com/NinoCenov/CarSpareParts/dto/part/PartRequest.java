@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.util.List;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,9 +24,9 @@ public class PartRequest {
     @NotNull()
     private Double price;
 
-    @NotBlank()
+    @NotNull()
     private Category category;
 
-    @NotBlank
+    @NotNull
     private List<Model> setOfPartsAndModels;
 }

@@ -1,5 +1,4 @@
 package com.NinoCenov.CarSpareParts.converter;
-
 import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
 import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;

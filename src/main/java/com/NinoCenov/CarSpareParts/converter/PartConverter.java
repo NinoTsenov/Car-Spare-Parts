@@ -1,31 +1,62 @@
 package com.NinoCenov.CarSpareParts.converter;
 import com.NinoCenov.CarSpareParts.dto.part.PartRequest;
 import com.NinoCenov.CarSpareParts.dto.part.PartResponse;
+import com.NinoCenov.CarSpareParts.entity.category.Category;
+import com.NinoCenov.CarSpareParts.entity.make.Make;
+import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.part.Part;
+import com.NinoCenov.CarSpareParts.exceptions.CategoryNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.MakeNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.ModelNotFoundException;
+import com.NinoCenov.CarSpareParts.repository.CategoryRepository;
+import com.NinoCenov.CarSpareParts.repository.ModelRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
+@AllArgsConstructor
 public class PartConverter {
 
+    private final CategoryRepository categoryRepository;
+    private final ModelRepository modelRepository;
+
     public Part createPart (PartRequest request){
+
+        Category category = categoryRepository.findByCategoryName(request.getCategory().getCategoryName()).orElseThrow(
+                ()-> new CategoryNotFoundException("This category is missing"));
+        List<Model> model = getModelList(request.getSetOfPartsAndModels());
+
         return Part.builder()
                 .partName(request.getPartName())
                 .partDescription(request.getPartDescription())
                 .price(request.getPrice())
-            //    .category(request.getCategory())  same as make
-                .setOfPartsAndModels(request.getSetOfPartsAndModels())
+                .category(category)
+                .setOfPartsAndModels(model)
                 .build();
     }
+    private List<Model> getModelList(List<Model> modelList) {
+        List<Model> models = new ArrayList<>();
 
+        for (Model model : modelList) {
+            Model model1 = modelRepository.findById(model.getId())
+                    .orElseThrow(() -> new ModelNotFoundException("Model was not found: " + model.getId()));
+            models.add(model1);
+        }
+        return models;
+    }
 
     public PartResponse toPartResponse(Part part) {
+        List<Model> model = getModelList(part.getSetOfPartsAndModels());
         PartResponse response = new PartResponse();
         response.setId(part.getId());
         response.setPartName(part.getPartName());
         response.setPartDescription(part.getPartDescription());
         response.setPrice(part.getPrice());
         response.setCategory(part.getCategory());
-       // response.set  new arraylist + for loop
+        response.setSetOfPartsAndModels(model);
         return response;
     }
 }
