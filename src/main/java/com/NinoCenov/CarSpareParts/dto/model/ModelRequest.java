@@ -1,6 +1,6 @@
 package com.NinoCenov.CarSpareParts.dto.model;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @AllArgsConstructor
@@ -10,9 +10,8 @@ import lombok.*;
 @Builder
 public class ModelRequest {
 
-    @NotEmpty()
+    @NotBlank
     private String model;
 
-    @NotEmpty
-    private String make;
+    private Make make;
 }

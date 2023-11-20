@@ -27,6 +27,6 @@ public class Make {
     private String make;
 
     @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Model> models;
+    private List<Model> model;
 
 }

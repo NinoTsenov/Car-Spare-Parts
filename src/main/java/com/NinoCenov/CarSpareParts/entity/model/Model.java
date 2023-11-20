@@ -2,8 +2,7 @@ package com.NinoCenov.CarSpareParts.entity.model;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
@@ -20,8 +19,7 @@ public class Model {
     private Long id;
 
     @Column(name = "model", nullable = false)
-    @NotEmpty()
-    @Size(min=2, max = 255)
+    @NotBlank
     private String model;
 
     @ManyToOne(fetch = FetchType.LAZY)
