@@ -4,7 +4,7 @@ import com.NinoCenov.CarSpareParts.converter.MakeConverter;
 import com.NinoCenov.CarSpareParts.dto.make.MakeRequest;
 import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
-import com.NinoCenov.CarSpareParts.exeptions.MakeNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.MakeNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.MakeRepository;
 import com.NinoCenov.CarSpareParts.service.MakeService;
 import lombok.AllArgsConstructor;

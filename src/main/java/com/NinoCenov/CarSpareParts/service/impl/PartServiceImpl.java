@@ -6,13 +6,12 @@ import com.NinoCenov.CarSpareParts.dto.part.PartResponse;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.part.Part;
 import com.NinoCenov.CarSpareParts.entity.category.Category;
-import com.NinoCenov.CarSpareParts.exeptions.PartNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.PartNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.PartRepository;
 import com.NinoCenov.CarSpareParts.service.PartService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

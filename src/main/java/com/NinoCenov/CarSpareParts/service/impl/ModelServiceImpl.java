@@ -5,7 +5,7 @@ import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
 import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
-import com.NinoCenov.CarSpareParts.exeptions.ModelNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.ModelNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.ModelRepository;
 import com.NinoCenov.CarSpareParts.service.ModelService;
 import lombok.AllArgsConstructor;
