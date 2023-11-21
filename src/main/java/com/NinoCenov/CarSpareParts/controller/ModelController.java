@@ -18,6 +18,7 @@ public class ModelController {
 
     private final ModelService service;
 
+
     @PostMapping("/create")
     public ResponseEntity<ModelResponse> createModel(@Valid @RequestBody ModelRequest request){
         ModelResponse createdModel = service.createModel(request);
@@ -48,7 +49,7 @@ public class ModelController {
     }
     @GetMapping("/findByMake/{make}")
     public ResponseEntity<List<ModelResponse>> getModelsByMake(@PathVariable Make make){
-        List<ModelResponse> allModels = service.findAllModelsByMaker(make);
+        List<ModelResponse> allModels = service.findAllModelsByMake(make);
         if(allModels!=null){
             return ResponseEntity.status(HttpStatus.OK).body(allModels);
         }

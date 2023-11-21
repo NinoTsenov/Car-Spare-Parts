@@ -30,5 +30,5 @@ public class PartResponse {
     private Category category;
 
     @NotNull
-    private List<Model> setOfPartsAndModels;
+    private List<Model> models;
 }

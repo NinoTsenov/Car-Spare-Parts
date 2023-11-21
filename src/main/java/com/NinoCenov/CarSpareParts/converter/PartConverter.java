@@ -25,16 +25,29 @@ public class PartConverter {
 
         Category category = categoryRepository.findByCategoryName(request.getCategory().getCategoryName()).orElseThrow(
                 ()-> new CategoryNotFoundException("This category is missing"));
-        List<Model> model = getModelList(request.getSetOfPartsAndModels());
+        List<Model> model = getModelList(request.getModels());
 
         return Part.builder()
                 .partName(request.getPartName())
                 .partDescription(request.getPartDescription())
                 .price(request.getPrice())
                 .category(category)
-                .setOfPartsAndModels(model)
+                .models(model)
                 .build();
     }
+
+    public PartResponse toPartResponse(Part part) {
+        List<Model> model = getModelList(part.getModels());
+        PartResponse response = new PartResponse();
+        response.setId(part.getId());
+        response.setPartName(part.getPartName());
+        response.setPartDescription(part.getPartDescription());
+        response.setPrice(part.getPrice());
+        response.setCategory(part.getCategory());
+        response.setModels(model);
+        return response;
+    }
+
     private List<Model> getModelList(List<Model> modelList) {
         List<Model> models = new ArrayList<>();
 
@@ -44,17 +57,5 @@ public class PartConverter {
             models.add(model1);
         }
         return models;
-    }
-
-    public PartResponse toPartResponse(Part part) {
-        List<Model> model = getModelList(part.getSetOfPartsAndModels());
-        PartResponse response = new PartResponse();
-        response.setId(part.getId());
-        response.setPartName(part.getPartName());
-        response.setPartDescription(part.getPartDescription());
-        response.setPrice(part.getPrice());
-        response.setCategory(part.getCategory());
-        response.setSetOfPartsAndModels(model);
-        return response;
     }
 }

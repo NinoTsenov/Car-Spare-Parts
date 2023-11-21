@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface ModelService {
-    List<ModelResponse> findAllModelsByMaker(Make make);
+    List<ModelResponse> findAllModelsByMake(Make make);
     ModelResponse createModel(ModelRequest request);
     void deleteModelById(Long id);
     ModelResponse updateModel(Long id, ModelRequest request);

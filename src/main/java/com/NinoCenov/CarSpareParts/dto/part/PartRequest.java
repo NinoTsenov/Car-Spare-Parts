@@ -27,6 +27,6 @@ public class PartRequest {
     @NotNull()
     private Category category;
 
-    @NotNull
-    private List<Model> setOfPartsAndModels;
+    @NotNull()
+    private List<Model> models;
 }

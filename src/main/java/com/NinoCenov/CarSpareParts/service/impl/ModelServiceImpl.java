@@ -1,5 +1,4 @@
 package com.NinoCenov.CarSpareParts.service.impl;
-
 import com.NinoCenov.CarSpareParts.converter.ModelConverter;
 import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
 import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
@@ -22,16 +21,16 @@ public class ModelServiceImpl implements ModelService {
     private final ModelConverter converter;
 
     @Override
-    public List<ModelResponse> findAllModelsByMaker(Make make) {
+    public List<ModelResponse> findAllModelsByMake(Make make) {
         List<Model> allModels = repository.findAll();
-        List<ModelResponse>sortedModelsByMaker=new ArrayList<>();
+        List<ModelResponse>sortedModelsByMake=new ArrayList<>();
         for(Model model: allModels){
             if(model.getMake().equals(make)){
                 ModelResponse foundModel = converter.toModelResponse(model);
-                sortedModelsByMaker.add(foundModel);
+                sortedModelsByMake.add(foundModel);
             }
         }
-        return sortedModelsByMaker;
+        return sortedModelsByMake;
     }
 
     @Override
@@ -50,6 +49,7 @@ public class ModelServiceImpl implements ModelService {
     public ModelResponse updateModel(Long id, ModelRequest request) {
         Model model = repository.findById(id).orElseThrow(()-> new ModelNotFoundException("This model was not found !"));
         model.setModel(request.getModel());
+        model.setMake(request.getMake());
         Model updatedModel = repository.save(model);
         return converter.toModelResponse(updatedModel);
     }

@@ -44,5 +44,5 @@ public class Part {
             name = "part_model",
             joinColumns = @JoinColumn(name = "part_id"),
             inverseJoinColumns = @JoinColumn(name = "model_id"))
-    private List<Model> setOfPartsAndModels;
+    private List<Model> models;
 }
