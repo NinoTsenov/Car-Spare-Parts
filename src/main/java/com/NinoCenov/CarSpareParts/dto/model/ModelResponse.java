@@ -17,5 +17,5 @@ public class ModelResponse {
     private String model;
 
 
-    private Make make;
+    private String make;
 }

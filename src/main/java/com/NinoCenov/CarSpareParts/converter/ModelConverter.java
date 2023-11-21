@@ -4,6 +4,7 @@ import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.exceptions.MakeNotFoundException;
+import com.NinoCenov.CarSpareParts.exceptions.ModelNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.MakeRepository;
 import com.NinoCenov.CarSpareParts.service.MakeService;
 import lombok.AllArgsConstructor;
@@ -32,10 +33,12 @@ public class ModelConverter {
     }
 
     public ModelResponse toModelResponse(Model model){
+        Make make = makeRepository.findById(model.getId()).orElseThrow(
+                ()-> new ModelNotFoundException("This model is missing"));
         ModelResponse response = new ModelResponse();
         response.setId(model.getId());
         response.setModel(model.getModel());
-        response.setMake(model.getMake());
+        response.setMake(make.getMake());
         return response;
     }
 }
