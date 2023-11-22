@@ -1,6 +1,4 @@
 package com.NinoCenov.CarSpareParts.dto.part;
-
-import com.NinoCenov.CarSpareParts.entity.category.Category;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
