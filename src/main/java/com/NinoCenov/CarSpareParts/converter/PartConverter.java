@@ -53,7 +53,7 @@ public class PartConverter {
 
         for (Model model : modelList) {
             Model model1 = modelRepository.findById(model.getId())
-                    .orElseThrow(() -> new ModelNotFoundException("Model was not found: " + model.getId()));
+                    .orElseThrow(() -> new ModelNotFoundException("Model was not found: "));
             models.add(model1);
         }
         return models;

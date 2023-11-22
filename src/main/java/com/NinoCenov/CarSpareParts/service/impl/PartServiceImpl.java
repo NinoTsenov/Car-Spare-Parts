@@ -31,6 +31,13 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public PartResponse createPart(PartRequest request) {
+        Category category = categoryRepository.findById(request.getCategory().getId()).orElse(null);
+        if (category == null) {
+            throw new CategoryNotFoundException("Category was not found !");
+        }
+
+        List<Model> models = modelRepository.findAllById(request.getModels().stream().map(Model::getId).toList());
+        request.setModels(models);
         Part part = partConverter.createPart(request);
         Part savedPart = partRepository.save(part);
         return partConverter.toPartResponse(savedPart);
@@ -38,16 +45,27 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public PartResponse updatePart(Long id, PartRequest request) {
-        Part part = partRepository.findById(id).orElseThrow(()-> new PartNotFoundException("Part was not found"));
-        part.setPartName(request.getPartName());
-        part.setPartDescription(request.getPartDescription());
-        part.setCategory(request.getCategory());
-        part.setPrice(request.getPrice());
-        part.setModels(request.getModels());
+        Part part = partRepository.findById(id).orElseThrow(() -> new PartNotFoundException("Part was not found"));
 
-        Part updatedPart = partRepository.save(part);
+        if (!part.getCategory().equals(part.getCategory())) {
+            Category category = categoryRepository.findById(part.getCategory().getId()).orElse(null);
+            if (category == null) {
+                throw new CategoryNotFoundException("Category was not found for this part");
+            }
+            List<Model> models = modelRepository.findAllById(
+                    part.getModels().stream().map(Model::getId).toList()
+            );
 
-        return partConverter.toPartResponse(updatedPart);
+            part.setPartName(request.getPartName());
+            part.setPartDescription(request.getPartDescription());
+            part.setPrice(request.getPrice());
+            part.setCategory(category);
+            part.setModels(models);
+        }
+
+            Part updatedPart = partRepository.save(part);
+
+            return partConverter.toPartResponse(updatedPart);
     }
 
     @Override
