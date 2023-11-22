@@ -21,7 +21,7 @@ public class PartRequest {
     @NotBlank()
     private String partDescription;
 
-    @NotNull()
+
     private Double price;
 
     @NotNull()

@@ -27,7 +27,7 @@ public class PartResponse {
     private Double price;
 
     @NotNull()
-    private Category category;
+    private String category;
 
     @NotNull
     private List<Model> models;

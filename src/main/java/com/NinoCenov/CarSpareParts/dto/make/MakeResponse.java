@@ -16,5 +16,5 @@ public class MakeResponse {
     private Long id;
 
     @NotBlank
-    private String make;
+    private String makeName;
 }

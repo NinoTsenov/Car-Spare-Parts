@@ -31,13 +31,11 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public PartResponse createPart(PartRequest request) {
-        Category category = categoryRepository.findById(request.getCategory().getId()).orElse(null);
-        if (category == null) {
-            throw new CategoryNotFoundException("Category was not found !");
-        }
-
+        Category category = categoryRepository.findById(request.getCategory().getId()).orElseThrow(
+                ()-> new CategoryNotFoundException("Category was not found !"));
         List<Model> models = modelRepository.findAllById(request.getModels().stream().map(Model::getId).toList());
         request.setModels(models);
+        request.setCategory(category);
         Part part = partConverter.createPart(request);
         Part savedPart = partRepository.save(part);
         return partConverter.toPartResponse(savedPart);
@@ -97,8 +95,8 @@ public class PartServiceImpl implements PartService {
                 .orElseThrow(() -> new ModelNotFoundException("Model not found: " + model));
 
 
-        List<Part> matchingParts = partRepository.findByCategoryAndModels
-                (foundCategory.getCategoryName(), Collections.singletonList(foundModel));
+        List<Part> matchingParts = partRepository.findByCategoryAndModelsIn
+                (foundCategory, Collections.singletonList(foundModel));
 
         return matchingParts.stream()
                 .map(partConverter::toPartResponse).collect(Collectors.toList());

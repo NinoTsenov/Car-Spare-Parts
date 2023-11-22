@@ -1,6 +1,7 @@
 package com.NinoCenov.CarSpareParts.entity.make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -22,9 +23,9 @@ public class Make {
     private Long id;
 
     @Column(name = "make", nullable = false)
-    @NotEmpty()
+    @NotBlank
     @Size(min=2, max = 255)
-    private String make;
+    private String makeName;
 
     @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Model> model;

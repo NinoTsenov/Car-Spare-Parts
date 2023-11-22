@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 public class CategoryResponse {
 
-    @NotNull
+
     private Long id;
 
     @NotBlank

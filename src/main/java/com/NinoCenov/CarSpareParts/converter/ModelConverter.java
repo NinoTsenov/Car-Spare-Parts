@@ -18,27 +18,28 @@ public class ModelConverter {
     private final MakeService makeService;
 
     public Model createModel(ModelRequest request){
-
-        Make make = makeRepository.findByMake(request.getMake().getMake()).orElseThrow(
-                ()-> new MakeNotFoundException("This make is missing and will be created"));
-        if (make==null){
-            make = Make.builder().make(request.getMake().getMake()).build();
+        Make newMake = makeRepository.findByMakeName(request.getMake().getMakeName()).orElseGet(() -> {
+            Make make = Make.builder().makeName(request.getMake().getMakeName()).build();
             makeRepository.save(make);
-        }
+            return make;
+        });
 
         return Model.builder()
                 .model(request.getModel())
-                .make(make)
+                .make(newMake)
                 .build();
     }
 
     public ModelResponse toModelResponse(Model model){
-        Make make = makeRepository.findById(model.getId()).orElseThrow(
-                ()-> new ModelNotFoundException("This model is missing"));
+        Make newMake = makeRepository.findByMakeName(model.getMake().getMakeName()).orElseGet(() -> {
+            Make make = Make.builder().makeName(model.getMake().getMakeName()).build();
+            makeRepository.save(make);
+            return make;
+        });
         ModelResponse response = new ModelResponse();
         response.setId(model.getId());
         response.setModel(model.getModel());
-        response.setMake(make.getMake());
+        response.setMakeName(model.getMake().getMakeName());
         return response;
     }
 }

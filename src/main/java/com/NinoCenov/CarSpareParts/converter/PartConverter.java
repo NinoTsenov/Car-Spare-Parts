@@ -43,7 +43,7 @@ public class PartConverter {
         response.setPartName(part.getPartName());
         response.setPartDescription(part.getPartDescription());
         response.setPrice(part.getPrice());
-        response.setCategory(part.getCategory());
+        response.setCategory(part.getCategory().getCategoryName());
         response.setModels(model);
         return response;
     }
@@ -52,9 +52,9 @@ public class PartConverter {
         List<Model> models = new ArrayList<>();
 
         for (Model model : modelList) {
-            Model model1 = modelRepository.findById(model.getId())
+            model = modelRepository.findById(model.getId())
                     .orElseThrow(() -> new ModelNotFoundException("Model was not found: "));
-            models.add(model1);
+            models.add(model);
         }
         return models;
     }

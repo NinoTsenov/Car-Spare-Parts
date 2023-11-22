@@ -1,4 +1,5 @@
 package com.NinoCenov.CarSpareParts.dto.make;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import lombok.*;
@@ -10,6 +11,6 @@ import lombok.*;
 @Builder
 public class MakeRequest {
 
-    @NotEmpty()
-    private String make;
+    @NotBlank
+    private String makeName;
 }

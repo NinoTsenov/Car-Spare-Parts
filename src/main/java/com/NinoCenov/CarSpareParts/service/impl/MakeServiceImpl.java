@@ -47,7 +47,7 @@ public class MakeServiceImpl implements MakeService {
     public MakeResponse updateMake(Long id, MakeRequest request) {
         Make make = repository.findById(id).orElseThrow(
                 ()-> new MakeNotFoundException("This make does not exist !"));
-        make.setMake(request.getMake());
+        make.setMakeName(request.getMakeName());
         Make updatedMake = repository.save(make);
         return converter.toMakeResponse(updatedMake);
     }

@@ -32,7 +32,7 @@ public class Part {
     private String partDescription;
 
     @Column(name = "price", nullable = false)
-    @NotEmpty()
+
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
