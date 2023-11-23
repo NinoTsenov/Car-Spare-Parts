@@ -1,7 +1,6 @@
 package com.NinoCenov.CarSpareParts.repository;
 import com.NinoCenov.CarSpareParts.dto.part.PartRequest;
 import com.NinoCenov.CarSpareParts.entity.category.Category;
-import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.part.Part;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

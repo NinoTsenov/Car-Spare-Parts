@@ -39,7 +39,7 @@ public class PartServiceImpl implements PartService {
     public PartResponse updatePart(Long id, PartRequest request) {
         Part part = partRepository.findById(id).orElseThrow(() -> new PartNotFoundException("Part was not found"));
 
-        if (!part.getCategory().equals(request.getCategoryId())) {
+        if (!part.getId().equals(request.getCategoryId())) {
             Category category = categoryRepository.findById(part.getCategory().getId()).orElseThrow(
                     ()-> new CategoryNotFoundException("Category was not found for this part"));
 

@@ -1,9 +1,7 @@
 package com.NinoCenov.CarSpareParts.entity.category;
 import com.NinoCenov.CarSpareParts.entity.part.Part;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
