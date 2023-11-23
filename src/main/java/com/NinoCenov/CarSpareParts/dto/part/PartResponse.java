@@ -1,5 +1,6 @@
 package com.NinoCenov.CarSpareParts.dto.part;
-import com.NinoCenov.CarSpareParts.entity.model.Model;
+import com.NinoCenov.CarSpareParts.dto.category.CategoryResponse;
+import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -15,18 +16,18 @@ public class PartResponse {
 
     private Long id;
 
-    @NotBlank()
+    @NotBlank
     private String partName;
 
-    @NotBlank()
+    @NotBlank
     private String partDescription;
 
-    @NotNull()
+    @NotNull
     private Double price;
 
-    @NotNull()
-    private String category;
 
-    @NotNull
-    private List<Model> models;
+    private CategoryResponse category;
+
+
+    private List<ModelResponse> models;
 }

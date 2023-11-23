@@ -9,23 +9,38 @@ import com.NinoCenov.CarSpareParts.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
-    private final CategoryRepository repository;
-    private final CategoryConverter converter;
+    private final CategoryRepository categoryRepository;
+    private final CategoryConverter categoryConverter;
 
     @Override
     public CategoryResponse createCategory(CategoryRequest request) {
-        Category category = converter.createCategory(request);
-        Category savedCategory = repository.save(category);
-        return converter.toCategoryResponse(savedCategory);
+        Category category = categoryConverter.createCategory(request);
+        Category savedCategory = categoryRepository.save(category);
+        return categoryConverter.toCategoryResponse(savedCategory);
     }
 
     @Override
     public void deleteCategoryById(Long id) {
-        repository.deleteById(id);
+        categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public List<CategoryResponse> findAll() {
+        List<Category> categoryList = categoryRepository.findAll();
+        List<CategoryResponse> responses = new ArrayList<>();
+
+        for (Category c : categoryList) {
+            CategoryResponse response = categoryConverter.toCategoryResponse(c);
+            responses.add(response);
+        }
+        return responses;
     }
 
 }

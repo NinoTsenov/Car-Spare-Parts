@@ -1,6 +1,7 @@
 package com.NinoCenov.CarSpareParts.controller;
 import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
 import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
+import com.NinoCenov.CarSpareParts.dto.model.ModelUpdateDTO;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.service.ModelService;
 import jakarta.validation.Valid;
@@ -31,7 +32,7 @@ public class ModelController {
         return ResponseEntity.status(HttpStatus.OK).body("Model was successfully deleted");
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ModelResponse>updateModel(@PathVariable Long id, @Valid @RequestBody ModelRequest request){
+    public ResponseEntity<ModelResponse>updateModel(@PathVariable Long id, @Valid @RequestBody ModelUpdateDTO request){
         ModelResponse updatedModel = service.updateModel(id, request);
         if(updatedModel!=null){
             return ResponseEntity.status(HttpStatus.OK).body(updatedModel);

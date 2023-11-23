@@ -53,11 +53,11 @@ public class PartController {
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @GetMapping("/byCategoryAndModel/{category}/{model}")
-    public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(
-            @PathVariable String category, @PathVariable String model){
-        List<PartResponse> foundPartsList = partService.getAllPartsByCategoryAndModel(category, model);
-        if(foundPartsList!=null){
+    @GetMapping("/byCategoryAndModel/{categoryId}/{model}")
+    public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
+            @RequestParam(value = "model", required = false) String model){
+        List<PartResponse> foundPartsList = partService.getAllPartsByCategoryAndModel(categoryId, model);
+        if(foundPartsList!=null && !foundPartsList.isEmpty()){
             return ResponseEntity.status(HttpStatus.OK).body(foundPartsList);
         }
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -67,7 +67,7 @@ public class PartController {
     public ResponseEntity<List<PartResponse>> getPartsByName(
             @PathVariable String name){
         List<PartResponse> foundPartsList = partService.getAllPartsInAllCategoriesByPartName(name);
-        if(foundPartsList!=null){
+        if(foundPartsList!=null && !foundPartsList.isEmpty()){
             return ResponseEntity.status(HttpStatus.OK).body(foundPartsList);
         }
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -18,9 +18,9 @@ public class Model {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "model", nullable = false)
+
     @NotBlank
-    private String model;
+    private String modelName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "make_id")

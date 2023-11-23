@@ -1,4 +1,6 @@
 package com.NinoCenov.CarSpareParts.dto.model;
+
+import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -8,14 +10,11 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class ModelResponse {
-
-
-    private Long id;
+public class ModelUpdateDTO {
 
     @NotBlank
     @Size(min = 2)
-    private String modelName;
+    private String name;
 
-    private String makeName;
+    private MakeResponse make;
 }

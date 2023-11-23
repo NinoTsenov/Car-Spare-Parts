@@ -11,6 +11,6 @@ public interface PartService {
     void deletePartById(Long id);
     List<PartResponse> getAllAvailableParts();
     PartResponse getPartById(Long id);
-    List<PartResponse>getAllPartsByCategoryAndModel(String category, String model);
+    List<PartResponse>getAllPartsByCategoryAndModel(Long categoryId, String model);
     List<PartResponse>getAllPartsInAllCategoriesByPartName(String partName);
 }

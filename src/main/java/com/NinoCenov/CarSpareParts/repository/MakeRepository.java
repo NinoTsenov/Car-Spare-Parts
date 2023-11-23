@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface MakeRepository extends JpaRepository<Make, Long> {
-    Optional<Make>findByMakeName(String makeName);
+    Make findByMakeName(String makeName);
 }

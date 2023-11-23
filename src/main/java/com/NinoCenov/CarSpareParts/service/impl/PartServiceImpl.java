@@ -6,7 +6,6 @@ import com.NinoCenov.CarSpareParts.entity.category.Category;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.entity.part.Part;
 import com.NinoCenov.CarSpareParts.exceptions.CategoryNotFoundException;
-import com.NinoCenov.CarSpareParts.exceptions.ModelNotFoundException;
 import com.NinoCenov.CarSpareParts.exceptions.PartNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.CategoryRepository;
 import com.NinoCenov.CarSpareParts.repository.ModelRepository;
@@ -16,7 +15,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +30,6 @@ public class PartServiceImpl implements PartService {
 
     @Override
     public PartResponse createPart(PartRequest request) {
-        Category category = categoryRepository.findById(request.getCategory().getId()).orElseThrow(
-                ()-> new CategoryNotFoundException("Category was not found !"));
-        List<Model> models = modelRepository.findAllById(request.getModels().stream().map(Model::getId).toList());
-        request.setModels(models);
-        request.setCategory(category);
         Part part = partConverter.createPart(request);
         Part savedPart = partRepository.save(part);
         return partConverter.toPartResponse(savedPart);
@@ -45,14 +39,11 @@ public class PartServiceImpl implements PartService {
     public PartResponse updatePart(Long id, PartRequest request) {
         Part part = partRepository.findById(id).orElseThrow(() -> new PartNotFoundException("Part was not found"));
 
-        if (!part.getCategory().equals(request.getCategory())) {
-            Category category = categoryRepository.findById(part.getCategory().getId()).orElse(null);
-            if (category == null) {
-                throw new CategoryNotFoundException("Category was not found for this part");
-            }
-            List<Model> models = modelRepository.findAllById(
-                    part.getModels().stream().map(Model::getId).toList()
-            );
+        if (!part.getCategory().equals(request.getCategoryId())) {
+            Category category = categoryRepository.findById(part.getCategory().getId()).orElseThrow(
+                    ()-> new CategoryNotFoundException("Category was not found for this part"));
+
+            List<Model> models = modelRepository.findAllById(part.getModels().stream().map(Model::getId).toList());
 
             part.setPartName(request.getPartName());
             part.setPartDescription(request.getPartDescription());
@@ -84,28 +75,23 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
-    public List<PartResponse> getAllPartsByCategoryAndModel(String category, String model) {
+    public List<PartResponse> getAllPartsByCategoryAndModel(Long categoryId, String model) {
 
-        Category foundCategory = categoryRepository.findByCategoryName(category)
-                .orElseThrow(() -> new CategoryNotFoundException("Category not found: " + category));
+        Category foundCategory = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFoundException("Category was not found "));
 
-
-
-        Model foundModel = modelRepository.findByModel(model)
-                .orElseThrow(() -> new ModelNotFoundException("Model not found: " + model));
-
-
-        List<Part> matchingParts = partRepository.findByCategoryAndModelsIn
-                (foundCategory, Collections.singletonList(foundModel));
+        List<Part> matchingParts = partRepository.findByCategoryAndModelName(foundCategory, model);
 
         return matchingParts.stream()
                 .map(partConverter::toPartResponse).collect(Collectors.toList());
     }
 
     @Override
-    public List<PartResponse> getAllPartsInAllCategoriesByPartName(String name) {
-        List<Part> foundParts = partRepository.findByPartName(name);
+    public List<PartResponse> getAllPartsInAllCategoriesByPartName(String partName) {
+        String lowerName = partName.toLowerCase();
 
-        return foundParts.stream().map(partConverter::toPartResponse).collect(Collectors.toList());
+        return partRepository.findAll().stream()
+                .filter(f -> f.getPartName().toLowerCase().contains(lowerName))
+                .map(partConverter::toPartResponse).collect(Collectors.toList());
     }
 }

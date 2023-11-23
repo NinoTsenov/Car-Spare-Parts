@@ -4,7 +4,6 @@ import com.NinoCenov.CarSpareParts.dto.model.ModelResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
 import com.NinoCenov.CarSpareParts.repository.MakeRepository;
-import com.NinoCenov.CarSpareParts.service.MakeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,31 +12,22 @@ import org.springframework.stereotype.Component;
 public class ModelConverter {
 
     private final MakeRepository makeRepository;
-    private final MakeService makeService;
 
     public Model createModel(ModelRequest request){
-        Make newMake = makeRepository.findByMakeName(request.getMake().getMakeName()).orElseGet(() -> {
-            Make make = Make.builder().makeName(request.getMake().getMakeName()).build();
-            makeRepository.save(make);
-            return make;
-        });
+
+        Make newMake = makeRepository.findByMakeName(request.getMakeName());
 
         return Model.builder()
-                .model(request.getModel())
+                .modelName(request.getModelName())
                 .make(newMake)
                 .build();
     }
 
     public ModelResponse toModelResponse(Model model){
-        Make newMake = makeRepository.findByMakeName(model.getMake().getMakeName()).orElseGet(() -> {
-            Make make = Make.builder().makeName(model.getMake().getMakeName()).build();
-            makeRepository.save(make);
-            return make;
-        });
-        ModelResponse response = new ModelResponse();
-        response.setId(model.getId());
-        response.setModel(model.getModel());
-        response.setMakeName(model.getMake().getMakeName());
-        return response;
+        return ModelResponse.builder()
+                .id(model.getId())
+                .modelName(model.getModelName())
+                .makeName(model.getMake().getMakeName())
+                .build();
     }
 }

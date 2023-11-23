@@ -1,10 +1,12 @@
 package com.NinoCenov.CarSpareParts.entity.make;
 import com.NinoCenov.CarSpareParts.entity.model.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,12 +23,13 @@ public class Make {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "make", nullable = false)
+
     @NotBlank
-    @Size(min=2, max = 255)
+    @Size(min=2)
     private String makeName;
 
     @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Model> model;
+    @JsonManagedReference
+    private List<Model> model=new ArrayList<>();
 
 }

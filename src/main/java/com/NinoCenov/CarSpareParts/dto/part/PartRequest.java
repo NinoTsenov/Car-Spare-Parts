@@ -1,8 +1,8 @@
 package com.NinoCenov.CarSpareParts.dto.part;
-import com.NinoCenov.CarSpareParts.entity.category.Category;
-import com.NinoCenov.CarSpareParts.entity.model.Model;
+import com.NinoCenov.CarSpareParts.dto.model.ModelRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
@@ -15,18 +15,20 @@ import java.util.List;
 @Builder
 public class PartRequest {
 
-    @NotBlank()
+    @NotBlank
+    @Size(min = 2)
     private String partName;
 
-    @NotBlank()
+    @NotBlank
+    @Size(max = 255)
     private String partDescription;
 
-
+    @NotNull
     private Double price;
 
-    @NotNull()
-    private Category category;
 
-    @NotNull()
-    private List<Model> models;
+    private Long categoryId;
+
+
+    private List<ModelRequest> models;
 }
