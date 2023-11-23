@@ -55,7 +55,7 @@ public class ModelServiceImpl implements ModelService {
 
         Make make = new Make();
         make.setId(request.getMake().getId());
-        make.setMakeName(request.getMake().getMakeName());
+        make.setName(request.getMake().getMakeName());
 
         if (make.getId() == null) {
             makeRepository.save(make);

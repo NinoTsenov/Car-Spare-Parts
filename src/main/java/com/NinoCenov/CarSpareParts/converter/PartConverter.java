@@ -38,10 +38,10 @@ public class PartConverter {
             String modelName = modelRequest.getModelName();
             String makeName = modelRequest.getMakeName();
 
-            Make make = makeRepository.findByMakeName(makeName);
+            Make make = makeRepository.findByName(makeName);
 
             if (make == null) {
-                make = makeRepository.save(Make.builder().makeName(makeName).build());
+                make = makeRepository.save(Make.builder().name(makeName).build());
             }
 
             Model model = Model.builder()

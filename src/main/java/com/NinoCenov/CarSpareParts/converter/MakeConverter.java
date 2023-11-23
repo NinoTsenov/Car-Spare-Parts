@@ -19,7 +19,7 @@ public class MakeConverter {
 
     public Make createMake(MakeRequest request) {
         return Make.builder()
-                .makeName(request.getMakeName())
+                .name(request.getMakeName())
                 .build();
     }
 
@@ -32,7 +32,7 @@ public class MakeConverter {
 
         MakeResponse response = new MakeResponse();
         response.setId(make.getId());
-        response.setMakeName(make.getMakeName());
+        response.setMakeName(make.getName());
         response.setModelNames(modelNames);
 
         return response;

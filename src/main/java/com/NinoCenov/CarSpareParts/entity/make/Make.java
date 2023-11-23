@@ -26,7 +26,7 @@ public class Make {
 
     @NotBlank
     @Size(min=2)
-    private String makeName;
+    private String name;
 
     @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference

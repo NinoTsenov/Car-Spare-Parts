@@ -15,8 +15,10 @@ public interface ModelRepository extends JpaRepository<Model, Long> {
 
     List<Model> findByMake (Make make);
 
-    @Query("SELECT m FROM Model m WHERE m.make.makeName LIKE %:makeName%")
+    @Query("SELECT m FROM Model m WHERE m.make.name LIKE %:makeName%")
     List<Model> findByMakeName (String makeName);
 
-    Model findByModelNameAndMakeName(String modelName, String makeName);
+  //  Model findByNameAndMakeName(String modelName, String makeName);
+
+
 }

@@ -15,7 +15,7 @@ public class ModelConverter {
 
     public Model createModel(ModelRequest request){
 
-        Make newMake = makeRepository.findByMakeName(request.getMakeName());
+        Make newMake = makeRepository.findByName(request.getMakeName());
 
         return Model.builder()
                 .modelName(request.getModelName())
@@ -27,7 +27,7 @@ public class ModelConverter {
         return ModelResponse.builder()
                 .id(model.getId())
                 .modelName(model.getModelName())
-                .makeName(model.getMake().getMakeName())
+                .makeName(model.getMake().getName())
                 .build();
     }
 }
