@@ -27,7 +27,7 @@ public class MakeConverter {
 
         List<Model> modelList = modelRepository.findByMake(make);
         List<String> modelNames = modelList.stream()
-                .map(Model::getModelName)
+                .map(Model::getName)
                 .collect(Collectors.toList());
 
         MakeResponse response = new MakeResponse();

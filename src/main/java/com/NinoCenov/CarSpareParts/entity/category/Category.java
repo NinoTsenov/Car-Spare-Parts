@@ -17,13 +17,13 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id", nullable = false)
+    @Column(name = "category_id")
     private Long id;
 
 
     @NotBlank
     @Size(min=2)
-    private String categoryName;
+    private String name;
 
 
     @NotBlank

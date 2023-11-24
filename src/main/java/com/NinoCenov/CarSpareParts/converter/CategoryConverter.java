@@ -13,7 +13,7 @@ public class CategoryConverter {
 
     public Category createCategory(CategoryRequest request){
         return Category.builder()
-                .categoryName(request.getCategoryName())
+                .name(request.getCategoryName())
                 .categoryDescription(request.getCategoryDescription())
                 .build();
     }
@@ -22,7 +22,7 @@ public class CategoryConverter {
 
         CategoryResponse response = new CategoryResponse();
         response.setId(category.getId());
-        response.setCategoryName(category.getCategoryName());
+        response.setCategoryName(category.getName());
         response.setCategoryDescription(category.getCategoryDescription());
         return response;
     }

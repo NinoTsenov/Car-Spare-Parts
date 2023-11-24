@@ -45,7 +45,7 @@ public class PartServiceImpl implements PartService {
 
             List<Model> models = modelRepository.findAllById(part.getModels().stream().map(Model::getId).toList());
 
-            part.setPartName(request.getPartName());
+            part.setName(request.getPartName());
             part.setPartDescription(request.getPartDescription());
             part.setPrice(request.getPrice());
             part.setCategory(category);
@@ -91,7 +91,7 @@ public class PartServiceImpl implements PartService {
         String lowerName = partName.toLowerCase();
 
         return partRepository.findAll().stream()
-                .filter(f -> f.getPartName().toLowerCase().contains(lowerName))
+                .filter(f -> f.getName().toLowerCase().contains(lowerName))
                 .map(partConverter::toPartResponse).collect(Collectors.toList());
     }
 }

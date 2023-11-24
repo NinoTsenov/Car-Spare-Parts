@@ -10,9 +10,9 @@ import java.util.List;
 
 @Repository
 public interface PartRepository extends JpaRepository<Part, Long> {
-  PartRequest findByPartName (String partName);
+  PartRequest findByName (String name);
 
-  @Query("SELECT p FROM Part p JOIN p.compatibleModels m WHERE p.category = :category AND m.name = :modelName")
+  @Query("SELECT p FROM Part p JOIN p.models m WHERE p.category = :category AND m.name = :modelName")
   List<Part> findByCategoryAndModelName(Category category, String modelName);
 
   List<Part> findByCategory (Category category);

@@ -45,7 +45,7 @@ public class PartConverter {
             }
 
             Model model = Model.builder()
-                    .modelName(modelName)
+                    .name(modelName)
                     .make(make)
                     .build();
 
@@ -54,7 +54,7 @@ public class PartConverter {
             models.add(model);
         }
         return Part.builder()
-                .partName(request.getPartName())
+                .name(request.getPartName())
                 .partDescription(request.getPartDescription())
                 .price(request.getPrice())
                 .category(category)
@@ -72,7 +72,7 @@ public class PartConverter {
 
         return PartResponse.builder()
                 .id(part.getId())
-                .partName(part.getPartName())
+                .partName(part.getName())
                 .partDescription(part.getPartDescription())
                 .price(part.getPrice())
                 .category(categoryConverter.toCategoryResponse(part.getCategory()))

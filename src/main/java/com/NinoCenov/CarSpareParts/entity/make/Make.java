@@ -20,7 +20,7 @@ import java.util.List;
 public class Make {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "make_id", nullable = false)
+    @Column(name = "make_id")
     private Long id;
 
 

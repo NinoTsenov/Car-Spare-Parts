@@ -61,7 +61,7 @@ public class ModelServiceImpl implements ModelService {
             makeRepository.save(make);
         }
 
-        model.setModelName(request.getName());
+        model.setName(request.getName());
         model.setMake(make);
         Model updatedModel = modelRepository.save(model);
         return modelConverter.toModelResponse(updatedModel);

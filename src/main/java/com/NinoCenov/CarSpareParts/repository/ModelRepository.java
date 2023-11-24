@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Repository
 public interface ModelRepository extends JpaRepository<Model, Long> {
-    Optional<Model> findByModelName(String modelName);
-
     List<Model> findByMake (Make make);
 
     @Query("SELECT m FROM Model m WHERE m.make.name LIKE %:makeName%")
-    List<Model> findByMakeName (String makeName);
+    List<Model> findByMakeName(String makeName);
 
-  //  Model findByNameAndMakeName(String modelName, String makeName);
+    Model findByNameAndMakeName(String modelName, String makeName);
+
+    Optional<Model> findByName(String modelName);
 
 
 }

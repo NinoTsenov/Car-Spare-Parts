@@ -15,12 +15,12 @@ import lombok.*;
 public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "model_id", nullable = false)
+    @Column(name = "model_id")
     private Long id;
 
 
     @NotBlank
-    private String modelName;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "make_id")
