@@ -40,9 +40,6 @@ public class User implements UserDetails {
 
     @Column(name = "password", nullable = false)
     @NotEmpty()
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!#%*?&])[A-Za-z\\d@$!#%*?&]{8,30}$",
-            message = "Password should be between 8 and 30 chars with at least 1 lowercase, 1 uppercase," +
-                    " 1 special char, 1 digit and no whitespace")
     private String password;
 
     @Enumerated(EnumType.STRING)

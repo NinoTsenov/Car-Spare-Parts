@@ -25,8 +25,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**").permitAll()
-//                        .requestMatchers("/api/v1/user/**").hasAuthority("USER")
-//                        .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
+//                        .requestMatchers("/api/v1/category/**").authenticated()
+//                        .requestMatchers("/api/v1/user/**").authenticated()
+//                        .requestMatchers("/api/v1/admin/**").authenticated()
                 .anyRequest().authenticated())
 //                        .exceptionHandling(e -> e
 //                                .authenticationEntryPoint((request, response, authException) -> {
