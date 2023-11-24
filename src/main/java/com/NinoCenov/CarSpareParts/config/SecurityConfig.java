@@ -1,6 +1,4 @@
 package com.NinoCenov.CarSpareParts.config;
-
-import jakarta.servlet.Filter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
