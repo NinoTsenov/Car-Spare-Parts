@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
-@Table(name = "Model")
+@Table(name = "Models")
 @Getter
 @Setter
 @Builder
@@ -15,7 +15,7 @@ import lombok.*;
 public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "model_id", nullable = false)
     private Long id;
 
 

@@ -21,15 +21,15 @@ import java.util.List;
 public class Part {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "part_id", nullable = false)
     private Long id;
 
-    @Column(name = "part", nullable = false)
+
     @NotBlank
     @Size(min=2)
     private String partName;
 
-    @Column(name = "part_description", nullable = false)
+
     @NotBlank
     @Size(max = 255)
     private String partDescription;
@@ -43,7 +43,7 @@ public class Part {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "part_model",
+            name = "part_list",
             joinColumns = @JoinColumn(name = "part_id"),
             inverseJoinColumns = @JoinColumn(name = "model_id"))
     private List<Model> models = new ArrayList<>();

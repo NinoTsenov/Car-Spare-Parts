@@ -8,7 +8,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "Categories")
 @Getter
 @Setter
 @Builder
@@ -17,15 +17,15 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Long id;
 
-    @Column(name = "category", nullable = false)
+
     @NotBlank
     @Size(min=2)
     private String categoryName;
 
-    @Column(name = "category_description", nullable = false)
+
     @NotBlank
     @Size(max=255)
     private String categoryDescription;

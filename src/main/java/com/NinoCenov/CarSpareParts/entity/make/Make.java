@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Make")
+@Table(name = "Makes")
 @Getter
 @Setter
 @Builder
@@ -20,7 +20,7 @@ import java.util.List;
 public class Make {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "make_id", nullable = false)
     private Long id;
 
 
