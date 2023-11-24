@@ -20,26 +20,26 @@ public class SecurityConfig {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
 
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/user/**").hasAuthority("USER")
-                        .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
+//                        .requestMatchers("/api/v1/user/**").hasAuthority("USER")
+//                        .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated())
-                        .exceptionHandling(e -> e
-                                .authenticationEntryPoint((request, response, authException) -> {
-                                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                                    response.getWriter().write("{\"Unauthorized access. Please log in.\"}");
-                                })
-                                .accessDeniedHandler((request, response, accessDeniedException) -> {
-                                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                                    response.getWriter().write("{\"Access Denied\"}");
-                                }))
+//                        .exceptionHandling(e -> e
+//                                .authenticationEntryPoint((request, response, authException) -> {
+//                                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//                                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//                                    response.getWriter().write("{\"Unauthorized access. Please log in.\"}");
+//                                })
+//                                .accessDeniedHandler((request, response, accessDeniedException) -> {
+//                                    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//                                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+//                                    response.getWriter().write("{\"Access Denied\"}");
+//                                }))
                 .sessionManagement(sessionManagementConfig ->
                         sessionManagementConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
