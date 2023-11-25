@@ -1,16 +1,12 @@
 package com.NinoCenov.CarSpareParts.service.impl;
-
 import com.NinoCenov.CarSpareParts.converter.MakeConverter;
 import com.NinoCenov.CarSpareParts.dto.make.MakeRequest;
 import com.NinoCenov.CarSpareParts.dto.make.MakeResponse;
 import com.NinoCenov.CarSpareParts.entity.make.Make;
-import com.NinoCenov.CarSpareParts.entity.user.User;
 import com.NinoCenov.CarSpareParts.exceptions.MakeNotFoundException;
 import com.NinoCenov.CarSpareParts.repository.MakeRepository;
 import com.NinoCenov.CarSpareParts.service.MakeService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
