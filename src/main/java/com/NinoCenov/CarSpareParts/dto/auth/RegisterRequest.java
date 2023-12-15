@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.auth;
+package com.NinoCenov.CarSpareParts.dto.auth;
 
 import lombok.*;
 

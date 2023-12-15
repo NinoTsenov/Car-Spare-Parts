@@ -1,6 +1,8 @@
-package com.NinoCenov.CarSpareParts.auth;
+package com.NinoCenov.CarSpareParts.service.authService;
 
-import com.NinoCenov.CarSpareParts.config.JwtService;
+import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationRequest;
+import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationResponse;
+import com.NinoCenov.CarSpareParts.dto.auth.RegisterRequest;
 import com.NinoCenov.CarSpareParts.entity.user.Role;
 import com.NinoCenov.CarSpareParts.entity.user.User;
 import com.NinoCenov.CarSpareParts.repository.UserRepository;

@@ -1,5 +1,6 @@
 package com.NinoCenov.CarSpareParts.config;
 
+import com.NinoCenov.CarSpareParts.service.authService.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,6 +1,10 @@
-package com.NinoCenov.CarSpareParts.auth;
+package com.NinoCenov.CarSpareParts.controller;
 
 
+import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationRequest;
+import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationResponse;
+import com.NinoCenov.CarSpareParts.dto.auth.RegisterRequest;
+import com.NinoCenov.CarSpareParts.service.authService.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

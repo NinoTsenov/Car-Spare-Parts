@@ -1,4 +1,4 @@
-package com.NinoCenov.CarSpareParts.config;
+package com.NinoCenov.CarSpareParts.service.authService;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
