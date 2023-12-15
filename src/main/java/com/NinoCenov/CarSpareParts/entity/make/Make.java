@@ -12,8 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Makes")
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/make")
+@RequestMapping("/api/v1/makes")
 @RequiredArgsConstructor
 public class MakeController {
 
@@ -20,16 +20,13 @@ public class MakeController {
 
     @PostMapping()
     public ResponseEntity<MakeResponse> createMake(@Valid @RequestBody MakeRequest request){
-        MakeResponse createdMake = makeService.createMake(request);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(createdMake);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(makeService.createMake(request));
     }
     @PutMapping("{id}")
     public ResponseEntity<MakeResponse>updateMake(@PathVariable Long id, @Valid @RequestBody MakeRequest request){
-        MakeResponse updatedMake = makeService.updateMake(id, request);
-        if(updatedMake!=null){
-            return ResponseEntity.status(HttpStatus.OK).body(updatedMake);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+            return ResponseEntity.status(HttpStatus.OK).body(makeService.updateMake(id,request));
     }
 
     @DeleteMapping("{id}")
@@ -38,13 +35,9 @@ public class MakeController {
         return ResponseEntity.status(HttpStatus.OK).body("This make was successfully deleted");
     }
 
-    @GetMapping("/search/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<MakeResponse> getMakeById(@PathVariable  Long id){
-        MakeResponse foundMake = makeService.findMakeById(id);
-        if(foundMake!=null){
-            return ResponseEntity.status(HttpStatus.OK).body(foundMake);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.OK).body(makeService.findMakeById(id));
     }
 
 

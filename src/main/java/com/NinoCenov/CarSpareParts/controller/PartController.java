@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/part")
+@RequestMapping("/api/v1/parts")
 @RequiredArgsConstructor
 public class PartController {
 
@@ -20,8 +20,8 @@ public class PartController {
 
     @PostMapping()
     public ResponseEntity<PartResponse> createPart(@Valid @RequestBody PartRequest request){
-        PartResponse createdPart = partService.createPart(request);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(createdPart);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(partService.createPart(request));
     }
 
     @DeleteMapping("{id}")
@@ -32,11 +32,8 @@ public class PartController {
 
     @PutMapping("{id}")
     public ResponseEntity<PartResponse>updatePart(@PathVariable Long id, @Valid @RequestBody PartRequest request){
-        PartResponse updatedPart = partService.updatePart(id, request);
-        if(updatedPart!=null){
-            return ResponseEntity.status(HttpStatus.OK).body(updatedPart);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+            return ResponseEntity.status(HttpStatus.OK).body(partService.updatePart(id,request));
     }
 
     @GetMapping()
@@ -44,35 +41,18 @@ public class PartController {
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllAvailableParts());
     }
 
-
-    @GetMapping("/search/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<PartResponse> getPartById(@PathVariable Long id){
-        PartResponse foundPart = partService.getPartById(id);
-        if(foundPart!=null){
-            return ResponseEntity.status(HttpStatus.OK).body(foundPart);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.OK).body(partService.getPartById(id));
     }
-
 
     @GetMapping("/search/{categoryId}/{model}")
     public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
-                                                                         @RequestParam(value = "model", required = false) String model){
-        List<PartResponse> foundPartsList = partService.getAllPartsByCategoryAndModel(categoryId, model);
-        if(foundPartsList!=null && !foundPartsList.isEmpty()){
-            return ResponseEntity.status(HttpStatus.OK).body(foundPartsList);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                                                                         @PathVariable String model) {
+        return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategoryAndModel(categoryId,model));
     }
-
-
-    @GetMapping("/search/{name}")
-    public ResponseEntity<List<PartResponse>> getPartsByName(
-            @PathVariable String name){
-        List<PartResponse> foundPartsList = partService.getAllPartsInAllCategoriesByPartName(name);
-        if(foundPartsList!=null && !foundPartsList.isEmpty()){
-            return ResponseEntity.status(HttpStatus.OK).body(foundPartsList);
-        }
-        else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    @GetMapping("{name}")
+    public ResponseEntity<List<PartResponse>> getPartsByName(@PathVariable String name) {
+        return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsInAllCategoriesByPartName(name));
     }
 }

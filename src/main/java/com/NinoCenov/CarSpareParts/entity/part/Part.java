@@ -13,8 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Parts")
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

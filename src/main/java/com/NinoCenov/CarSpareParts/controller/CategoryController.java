@@ -9,16 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService service;
 
 
-    @PostMapping("/create")
+    @PostMapping()
     public ResponseEntity<CategoryResponse> createCategory(@Valid @RequestBody CategoryRequest request){
-        CategoryResponse createdCategory = service.createCategory(request);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(createdCategory);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(service.createCategory(request));
     }
 
     @DeleteMapping("/{id}")
