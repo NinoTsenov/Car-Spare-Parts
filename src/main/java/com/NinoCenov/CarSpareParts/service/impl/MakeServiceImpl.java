@@ -22,9 +22,6 @@ public class MakeServiceImpl implements MakeService {
     @Override
     public MakeResponse createMake(MakeRequest request) {
 
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = (User) auth.getPrincipal();
-
         Make make = converter.createMake(request);
         Make savedMake = repository.save(make);
         return converter.toMakeResponse(savedMake);

@@ -69,7 +69,8 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public ModelResponse findModelById(Long id) {
-        Model model = modelRepository.findById(id).orElseThrow(()-> new ModelNotFoundException("This model was not found !"));
+        Model model = modelRepository.findById(id).orElseThrow(
+                ()-> new ModelNotFoundException("This model was not found !"));
 
         return modelConverter.toModelResponse(model);
     }

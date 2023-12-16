@@ -3,7 +3,6 @@ package com.NinoCenov.CarSpareParts.service.authService;
 import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationRequest;
 import com.NinoCenov.CarSpareParts.dto.auth.AuthenticationResponse;
 import com.NinoCenov.CarSpareParts.dto.auth.RegisterRequest;
-import com.NinoCenov.CarSpareParts.entity.user.Role;
 import com.NinoCenov.CarSpareParts.entity.user.User;
 import com.NinoCenov.CarSpareParts.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,7 @@ public class AuthenticationService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(request.getRole())
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);

@@ -35,6 +35,7 @@ public class PartConverter {
         List<Model> models = new ArrayList<>();
 
         for (ModelRequest modelRequest : modelRequests) {
+            Long modelId = modelRequest.getId();
             String modelName = modelRequest.getModelName();
             String makeName = modelRequest.getMakeName();
 
@@ -44,10 +45,18 @@ public class PartConverter {
                 make = makeRepository.save(Make.builder().name(makeName).build());
             }
 
-            Model model = Model.builder()
-                    .name(modelName)
-                    .make(make)
-                    .build();
+            Model model = null;
+            if (modelId != null)
+            {
+                model = modelRepository.findById(modelId).orElse(null);
+            }
+            if (model == null)
+            {
+                model = Model.builder()
+                        .name(modelName)
+                        .make(make)
+                        .build();
+            }
 
             model = modelRepository.save(model);
 

@@ -12,7 +12,7 @@ import java.util.List;
 public interface PartRepository extends JpaRepository<Part, Long> {
   PartRequest findByName (String name);
 
-  @Query("SELECT p FROM Part p JOIN p.models m WHERE p.category = :category AND m.name = :modelName")
+  @Query("SELECT p FROM Part p JOIN p.models m WHERE p.category = :category AND m.name LIKE CONCAT('%',:modelName,'%')")
   List<Part> findByCategoryAndModelName(Category category, String modelName);
 
   List<Part> findByCategory (Category category);

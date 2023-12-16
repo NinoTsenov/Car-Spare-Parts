@@ -20,13 +20,13 @@ public class ModelController {
 
     private final ModelService modelService;
 
-    @PostMapping()
+    @PostMapping("/admin")
     public ResponseEntity<ModelResponse> createModel(@Valid @RequestBody ModelRequest request) {
 
         return  ResponseEntity.status(HttpStatus.CREATED).body(modelService.createModel(request));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/admin/{id}")
     public ResponseEntity<String> deleteModelById(@PathVariable Long id) {
         modelService.deleteModelById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Model was successfully deleted");

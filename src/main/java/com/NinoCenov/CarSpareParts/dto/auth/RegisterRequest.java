@@ -1,5 +1,6 @@
 package com.NinoCenov.CarSpareParts.dto.auth;
 
+import com.NinoCenov.CarSpareParts.entity.user.Role;
 import lombok.*;
 
 @Getter
@@ -13,4 +14,5 @@ public class RegisterRequest {
     private String lastName;
     private String email;
     private String password;
+    private Role role;
 }
