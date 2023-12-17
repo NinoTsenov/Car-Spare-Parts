@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -57,5 +58,9 @@ public class MakeServiceImpl implements MakeService {
         Make make = repository.findById(id).orElseThrow(
                 ()-> new MakeNotFoundException("This make does not exist !"));
         return converter.toMakeResponse(make);
+    }
+    @Override
+    public Optional<Make> getMakeById(Long id) {
+        return repository.findById(id);
     }
 }

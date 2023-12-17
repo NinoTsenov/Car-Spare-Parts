@@ -4,6 +4,7 @@ import com.NinoCenov.CarSpareParts.dto.part.PartRequest;
 import com.NinoCenov.CarSpareParts.dto.part.PartResponse;
 import com.NinoCenov.CarSpareParts.service.PartService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +49,7 @@ public class PartController {
 
     @GetMapping("/search/{categoryId}/{model}")
     public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
-                                                                         @PathVariable String model) {
+                                                     @RequestParam(value = "model",required = false) String model) {
         if (model!=null&& !model.isEmpty())
 
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategoryAndModel(categoryId,model));
