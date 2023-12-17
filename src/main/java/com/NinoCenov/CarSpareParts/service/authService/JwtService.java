@@ -5,9 +5,13 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,6 +22,20 @@ import java.util.function.Function;
 public class JwtService {
 
     private static final String SECRET_KEY = "QGcZpHM46CdZpFtAl8YyouqKJpGOTVr1ljkshgfljkdxflkiasdf";
+
+//  This procedure is for hiding the SECRET_KEY:
+
+//    private static final String SECRET_KEY_FILE_PATH = "/path_to_mine_secret-key.txt";
+//
+//    private String getSecretKey() {
+//        try {
+//            Path path = Paths.get(SECRET_KEY_FILE_PATH);
+//            byte[] keyBytes = Files.readAllBytes(path);
+//            return new String(keyBytes).trim();
+//        } catch (Exception e) {
+//            throw new RuntimeException("Failed to read secret key from file: " + SECRET_KEY_FILE_PATH, e);
+//        }
+//    }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
