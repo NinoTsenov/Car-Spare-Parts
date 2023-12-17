@@ -56,7 +56,7 @@ public class PartController {
             return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategory(categoryId));
     }
     @GetMapping("{name}")
-    public ResponseEntity<List<PartResponse>> getPartsByName(@PathVariable String name) {
+    public ResponseEntity<List<PartResponse>> getPartsByName(@RequestParam String name) {
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsInAllCategoriesByPartName(name));
     }
 }
