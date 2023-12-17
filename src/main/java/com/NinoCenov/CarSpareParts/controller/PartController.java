@@ -23,13 +23,13 @@ public class PartController {
         return  ResponseEntity.status(HttpStatus.CREATED).body(partService.createPart(request));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePartById(@PathVariable Long id){
         partService.deletePartById(id);
         return ResponseEntity.status(HttpStatus.OK).body("This part was successfully deleted");
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PartResponse>updatePart(@PathVariable Long id, @Valid @RequestBody PartRequest request){
 
             return ResponseEntity.status(HttpStatus.OK).body(partService.updatePart(id,request));
@@ -40,7 +40,7 @@ public class PartController {
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllAvailableParts());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PartResponse> getPartById(@PathVariable Long id){
             return ResponseEntity.status(HttpStatus.OK).body(partService.getPartById(id));
     }
@@ -55,7 +55,7 @@ public class PartController {
         else
             return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategory(categoryId));
     }
-    @GetMapping("{name}")
+    @GetMapping("/{name}")
     public ResponseEntity<List<PartResponse>> getPartsByName(@RequestParam String name) {
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsInAllCategoriesByPartName(name));
     }

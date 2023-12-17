@@ -33,19 +33,19 @@ public class ModelController {
     }
 
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ModelResponse>updateModel(@PathVariable Long id, @Valid @RequestBody ModelUpdateDTO request) {
             return ResponseEntity.status(HttpStatus.OK).body(modelService.updateModel(id,request));
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ModelResponse> getModelById(@PathVariable Long id) {
             return ResponseEntity.status(HttpStatus.OK).body(modelService.findModelById(id));
     }
 
 
-    @GetMapping("{make}")
+    @GetMapping("/{make}")
     public ResponseEntity<List<ModelResponse>> getModelsByMake(@RequestParam Make make) {
             return ResponseEntity.status(HttpStatus.OK).body(modelService.findAllModelsByMake(make));
     }

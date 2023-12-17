@@ -23,19 +23,19 @@ public class MakeController {
 
         return  ResponseEntity.status(HttpStatus.CREATED).body(makeService.createMake(request));
     }
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<MakeResponse>updateMake(@PathVariable Long id, @Valid @RequestBody MakeRequest request){
 
             return ResponseEntity.status(HttpStatus.OK).body(makeService.updateMake(id,request));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteMakeById(@PathVariable Long id){
         makeService.deleteMakeById(id);
         return ResponseEntity.status(HttpStatus.OK).body("This make was successfully deleted");
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<MakeResponse> getMakeById(@PathVariable  Long id){
             return ResponseEntity.status(HttpStatus.OK).body(makeService.findMakeById(id));
     }
