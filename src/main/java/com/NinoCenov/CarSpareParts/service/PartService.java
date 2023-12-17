@@ -12,5 +12,6 @@ public interface PartService {
     List<PartResponse> getAllAvailableParts();
     PartResponse getPartById(Long id);
     List<PartResponse>getAllPartsByCategoryAndModel(Long categoryId, String model);
+    List<PartResponse>getAllPartsByCategory(Long categoryId);
     List<PartResponse>getAllPartsInAllCategoriesByPartName(String partName);
 }

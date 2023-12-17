@@ -87,6 +87,18 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
+    public List<PartResponse> getAllPartsByCategory(Long categoryId) {
+        Category foundCategory = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFoundException("Category was not found "));
+
+        List<Part> matchingParts = partRepository.findByCategory(foundCategory);
+
+        return matchingParts.stream()
+                .map(partConverter::toPartResponse).collect(Collectors.toList());
+        //different response for parts w/o models ???
+    }
+
+    @Override
     public List<PartResponse> getAllPartsInAllCategoriesByPartName(String partName) {
         String lowerName = partName.toLowerCase();
 

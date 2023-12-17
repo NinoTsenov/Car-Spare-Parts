@@ -49,7 +49,12 @@ public class PartController {
     @GetMapping("/search/{categoryId}/{model}")
     public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
                                                                          @PathVariable String model) {
+        if (model!=null&& !model.isEmpty())
+
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategoryAndModel(categoryId,model));
+
+        else
+            return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategory(categoryId));
     }
     @GetMapping("{name}")
     public ResponseEntity<List<PartResponse>> getPartsByName(@PathVariable String name) {
