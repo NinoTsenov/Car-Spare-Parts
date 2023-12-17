@@ -45,8 +45,13 @@ public class ModelController {
     }
 
 
-    @GetMapping("/{make}")
-    public ResponseEntity<List<ModelResponse>> getModelsByMake(@RequestParam Make make) {
+    @GetMapping()
+    public ResponseEntity<List<ModelResponse>> getModelsByMake(
+            @RequestParam(value = "make",required = false) Make make) {
+
+        if (make!=null)
             return ResponseEntity.status(HttpStatus.OK).body(modelService.findAllModelsByMake(make));
+        else
+            return ResponseEntity.status(HttpStatus.OK).body(modelService.findAll());
     }
 }

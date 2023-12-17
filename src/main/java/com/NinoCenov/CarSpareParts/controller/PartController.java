@@ -45,7 +45,7 @@ public class PartController {
             return ResponseEntity.status(HttpStatus.OK).body(partService.getPartById(id));
     }
 
-    @GetMapping("/search/{categoryId}")
+    @GetMapping("/{categoryId}")
     public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
                                                      @RequestParam(value = "model",required = false) String model) {
         if (model!=null&& !model.isEmpty())
@@ -55,8 +55,8 @@ public class PartController {
         else
             return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsByCategory(categoryId));
     }
-    @GetMapping("/{name}")
-    public ResponseEntity<List<PartResponse>> getPartsByName(@RequestParam String name) {
+    @GetMapping("search/{name}")
+    public ResponseEntity<List<PartResponse>> getPartsByName(@PathVariable String name) {
         return ResponseEntity.status(HttpStatus.OK).body(partService.getAllPartsInAllCategoriesByPartName(name));
     }
 }
