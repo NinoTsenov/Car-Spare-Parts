@@ -45,7 +45,7 @@ public class PartController {
             return ResponseEntity.status(HttpStatus.OK).body(partService.getPartById(id));
     }
 
-    @GetMapping("/search/{categoryId}/{model}")
+    @GetMapping("/search/{categoryId}")
     public ResponseEntity<List<PartResponse>> getPartsByCategoryAndModel(@PathVariable Long categoryId,
                                                      @RequestParam(value = "model",required = false) String model) {
         if (model!=null&& !model.isEmpty())
